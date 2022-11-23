@@ -49,37 +49,38 @@
 
 ### **메뉴의 잘못된 입력 처리**
 
-![[wrong_input](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3557df46-110c-4903-bc77-539505015d63/_2019-07-20__1.16.25.png)](https://github.com/b1ctory/MyCreditManager/blob/master/image/wrong_menu_input.png?raw=true)
+![wrong_input](https://github.com/b1ctory/MyCreditManager/blob/master/image/wrong_menu_input.png?raw=true)
 
 ### **학생추가**
 
 - 메뉴를 선택한 후에도 잘못 입력한 것이 있으면 처리해 주어야합니다
 - 이미 존재하는 학생은 다시 추가하지 않습니다
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73442ba1-ac38-4374-8601-8365bf298e81/_2019-07-20__1.17.08.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73442ba1-ac38-4374-8601-8365bf298e81/_2019-07-20__1.17.08.png)
+![add_student](https://github.com/b1ctory/MyCreditManager/blob/master/image/add_student.png?raw=true)
 
 ### **학생 삭제**
 
 - 메뉴를 선택한 후에도 잘못 입력한 것이 있으면 처리해 주어야합니다
 - 없는 학생은 삭제하지 않습니다
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3ae5ec95-4a3e-47f2-b8af-bfe93aa83632/_2019-07-20__1.18.14.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3ae5ec95-4a3e-47f2-b8af-bfe93aa83632/_2019-07-20__1.18.14.png)
+![delete_student](https://github.com/b1ctory/MyCreditManager/blob/master/image/delete_student.png?raw=true)
+
 
 ### **성적추가**
 
 - 메뉴를 선택한 후에도 잘못 입력한 것이 있으면 처리해 주어야합니다
 - 없는 학생의 성적은 추가하지 않습니다
 
-![_2019-07-20__1.19.45.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/264e268b-79d5-4ae7-8023-021374ce8453/_2019-07-20__1.19.45.png)
+![add_score](https://github.com/b1ctory/MyCreditManager/blob/master/image/add_score.png?raw=true)
 
-![_2019-07-20__1.20.20.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/16d3790e-3db3-4e95-8b46-2fe45673ecd0/_2019-07-20__1.20.20.png)
+![add_score_2](https://github.com/b1ctory/MyCreditManager/blob/master/image/add_score2.png?raw=true)
 
 ### **성적삭제**
 
 - 메뉴를 선택한 후에도 잘못 입력한 것이 있으면 처리해 주어야합니다
 - 없는 학생의 성적은 삭제하지 않습니다
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/dd74a254-4ec3-409b-b4aa-b2c9cd567c71/_2019-07-20__1.21.10.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/dd74a254-4ec3-409b-b4aa-b2c9cd567c71/_2019-07-20__1.21.10.png)
+![delete_score](https://github.com/b1ctory/MyCreditManager/blob/master/image/delete_score.png?raw=true)
 
 ### **평점보기**
 
@@ -87,10 +88,10 @@
 - 해당 학생의 과목과 성적을 모두 출력한 후 마지막 줄에 평점을 출력합니다
 - 없는 학생은 평점을 보여주지 않습니다
 
-![_2019-07-20__1.23.23.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b5e7ecbd-42ca-4b00-98d6-f1d3bc6fe175/_2019-07-20__1.23.23.png)
+![show_grade](https://github.com/b1ctory/MyCreditManager/blob/master/image/show_grade.png?raw=true)
 
 ### **종료**
 
 - 프로그램을 종료합니다
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/02fa6200-fe84-4967-aae8-518a5f43253f/_2019-07-20__1.23.53.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/02fa6200-fe84-4967-aae8-518a5f43253f/_2019-07-20__1.23.53.png)
+![exit_program](https://github.com/b1ctory/MyCreditManager/blob/master/image/exit_program.png?raw=true)
