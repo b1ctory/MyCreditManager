@@ -7,6 +7,8 @@
 
 import Foundation
 
+var studentList: [Student] = []
+
 func startManager() {
     print(Constants.Message.startMessage)
     print(Constants.Message.selectMessage)
@@ -37,8 +39,32 @@ func startManager() {
 func addStudent() {
     print(Constants.Message.addStudentNameInputMessage)
     
+    if let name = readLine() {
+        if name.count != 0 {
+            if checkDuplicateName(name: name) {
+                studentList.append(Student(name: name, score: nil, grade: nil))
+                print("\(name+Constants.SuccessMessage.addStudentNameSuccessMessage)")
+            } else {
+                print(Constants.ErrorMessage.studentAlreadyExistMessage)
+            }
+            
+        } else {
+            print(Constants.ErrorMessage.inputErrorMessage)
+        }
+    }
+    
     startManager()
 }
+
+func checkDuplicateName(name: String) -> Bool {
+    var nameList: [String] = []
+    studentList.forEach {
+        nameList.append($0.name)
+    }
+    
+    return nameList.contains(name) ? false : true
+}
+
 
 func deleteStudent() {
     print(Constants.Message.deleteStudentNameInputMessage)
