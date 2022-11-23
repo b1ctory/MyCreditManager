@@ -49,7 +49,7 @@
 
 ### **메뉴의 잘못된 입력 처리**
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3557df46-110c-4903-bc77-539505015d63/_2019-07-20__1.16.25.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3557df46-110c-4903-bc77-539505015d63/_2019-07-20__1.16.25.png)
+![[wrong_input](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3557df46-110c-4903-bc77-539505015d63/_2019-07-20__1.16.25.png)](https://github.com/b1ctory/MyCreditManager/blob/master/image/wrong_menu_input.png?raw=true)
 
 ### **학생추가**
 
