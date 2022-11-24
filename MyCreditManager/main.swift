@@ -43,11 +43,12 @@ func addStudent() {
     let name = readLine() ?? ""
     
     if name.trimmingCharacters(in: .whitespaces).count > 0 {
-        if studentList.contains(where: { $0.name == name }) {
-            print(name + " " + Constants.ErrorMessage.studentAlreadyExistMessage)
+        let trimmedName = name.replacingOccurrences(of: " ", with: "")
+        if studentList.contains(where: { $0.name == trimmedName }) {
+            print(trimmedName + " " + Constants.ErrorMessage.studentAlreadyExistMessage)
         } else {
-            studentList.append(Student(name: name, score: [:]))
-            print(name + Constants.SuccessMessage.addStudentNameSuccessMessage)
+            studentList.append(Student(name: trimmedName, score: [:]))
+            print(trimmedName + Constants.SuccessMessage.addStudentNameSuccessMessage)
         }
     } else {
         print(Constants.ErrorMessage.inputErrorMessage)
