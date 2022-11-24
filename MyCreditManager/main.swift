@@ -26,6 +26,8 @@ func startManager() {
         deleteScore()
     case "5":
         printGrade()
+    case "6":
+        printStudentList()
     case "X":
         exitProgram()
     default:
@@ -81,14 +83,17 @@ func addOrEditScore() {
     
     if studentScoreInput.count > 0 && studentScoreInput.split(separator: " ").count == 3 {
         let splitedStudentInput = studentScoreInput.split(separator: " ")
-        let name = splitedStudentInput[0]
-        let subject = String(describing: splitedStudentInput[1])
-        let score = splitedStudentInput[2]
+        let name = String(splitedStudentInput[0])
+        let subject = String(splitedStudentInput[1])
+        let score = String(splitedStudentInput[2])
         
         if let idx = studentList.firstIndex(where: { $0.name == name }) {
             var scoreDic = studentList[idx].score
-            scoreDic[subject] = String(score)
-            studentList[idx] = Student(name: String(name), score: scoreDic)
+            scoreDic[subject] = score
+            studentList[idx] = Student(name: name, score: scoreDic)
+            print("\(name) 학생의 \(subject) 과목이 \(score)로 " + Constants.SuccessMessage.addScoreSuccessMessage)
+        } else {
+            print(name + Constants.ErrorMessage.studentNotFoundMessage)
         }
         
     } else {
@@ -106,6 +111,13 @@ func deleteScore() {
 func printGrade() {
     print(Constants.Message.getGradeMessage)
     startManager()
+}
+
+/// 임시 메소드 -> 리스트 파악용
+func printStudentList() {
+    print(studentList)
+    startManager()
+    
 }
 
 func exitProgram() {
