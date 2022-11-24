@@ -10,5 +10,5 @@ import Foundation
 struct Student {
     var name: String
     var score: [[String: String]]?
-    var grade: Float?
+    // 평점 계산 로직 (print로? 리턴으로?)
 }

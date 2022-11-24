@@ -40,14 +40,13 @@ func addStudent() {
     print(Constants.Message.addStudentNameInputMessage)
     
     if let name = readLine() {
-        if name.count > 0 {
-            if checkDuplicateName(name: name) {
-                studentList.append(Student(name: name, score: nil, grade: nil))
-                print(name + Constants.SuccessMessage.addStudentNameSuccessMessage)
+        if name.trimmingCharacters(in: .whitespaces).count > 0 {
+            if studentList.contains(where: { $0.name == name }) {
+                print(name + " " + Constants.ErrorMessage.studentAlreadyExistMessage)
             } else {
-                print(Constants.ErrorMessage.studentAlreadyExistMessage)
+                studentList.append(Student(name: name, score: nil))
+                print(name + Constants.SuccessMessage.addStudentNameSuccessMessage)
             }
-            
         } else {
             print(Constants.ErrorMessage.inputErrorMessage)
         }
@@ -55,16 +54,6 @@ func addStudent() {
     
     startManager()
 }
-
-func checkDuplicateName(name: String) -> Bool {
-    var nameList: [String] = []
-    studentList.forEach {
-        nameList.append($0.name)
-    }
-    
-    return nameList.contains(name) ? false : true
-}
-
 
 func deleteStudent() {
     print(Constants.Message.deleteStudentNameInputMessage)
@@ -98,6 +87,7 @@ func checkExistName(name: String) -> Bool {
 
 func addOrEditScore() {
     print(Constants.Message.addScoreInputMessage)
+
     startManager()
 }
 
