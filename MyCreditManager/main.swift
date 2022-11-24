@@ -59,8 +59,8 @@ func deleteStudent() {
     print(Constants.Message.deleteStudentNameInputMessage)
     
     if let name = readLine() {
-        if name.count > 0 {
-            if checkExistName(name: name) {
+        if name.trimmingCharacters(in: .whitespaces).count > 0 {
+            if studentList.contains(where: { $0.name == name }) {
                 studentList = studentList.filter {
                     $0.name != name
                 }
@@ -71,23 +71,27 @@ func deleteStudent() {
         } else {
             print(Constants.ErrorMessage.inputErrorMessage)
         }
+        print(studentList)
     }
     
     startManager()
 }
 
-func checkExistName(name: String) -> Bool {
-    var nameList: [String] = []
-    studentList.forEach {
-        nameList.append($0.name)
-    }
-    
-    return nameList.contains(name) ? true : false
-}
-
 func addOrEditScore() {
     print(Constants.Message.addScoreInputMessage)
-
+    
+    if let student = readLine() {
+        if student.count > 0 && student.split(separator: " ").count == 3 {
+            var splitedStudentInput = student.split(separator: " ")
+            let name = splitedStudentInput[0]
+            let subject = splitedStudentInput[1]
+            let score = splitedStudentInput[2]
+        } else {
+            print(Constants.ErrorMessage.inputErrorMessage)
+        }
+        
+    }
+    
     startManager()
 }
 
