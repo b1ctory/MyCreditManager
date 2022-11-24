@@ -38,40 +38,37 @@ func startManager() {
 
 func addStudent() {
     print(Constants.Message.addStudentNameInputMessage)
+    let name = readLine() ?? ""
     
-    if let name = readLine() {
-        if name.trimmingCharacters(in: .whitespaces).count > 0 {
-            if studentList.contains(where: { $0.name == name }) {
-                print(name + " " + Constants.ErrorMessage.studentAlreadyExistMessage)
-            } else {
-                studentList.append(Student(name: name, score: nil))
-                print(name + Constants.SuccessMessage.addStudentNameSuccessMessage)
-            }
+    if name.trimmingCharacters(in: .whitespaces).count > 0 {
+        if studentList.contains(where: { $0.name == name }) {
+            print(name + " " + Constants.ErrorMessage.studentAlreadyExistMessage)
         } else {
-            print(Constants.ErrorMessage.inputErrorMessage)
+            studentList.append(Student(name: name, score: nil))
+            print(name + Constants.SuccessMessage.addStudentNameSuccessMessage)
         }
+    } else {
+        print(Constants.ErrorMessage.inputErrorMessage)
     }
-    
     startManager()
 }
 
 func deleteStudent() {
     print(Constants.Message.deleteStudentNameInputMessage)
     
-    if let name = readLine() {
-        if name.trimmingCharacters(in: .whitespaces).count > 0 {
-            if studentList.contains(where: { $0.name == name }) {
-                studentList = studentList.filter {
-                    $0.name != name
-                }
-                print(name + " " + Constants.SuccessMessage.deleteStudentNameSuccessMessage)
-            } else {
-                print(name + Constants.ErrorMessage.studentNotFoundMessage)
+    let name = readLine() ?? ""
+    
+    if name.trimmingCharacters(in: .whitespaces).count > 0 {
+        if studentList.contains(where: { $0.name == name }) {
+            studentList = studentList.filter {
+                $0.name != name
             }
+            print(name + " " + Constants.SuccessMessage.deleteStudentNameSuccessMessage)
         } else {
-            print(Constants.ErrorMessage.inputErrorMessage)
+            print(name + Constants.ErrorMessage.studentNotFoundMessage)
         }
-        print(studentList)
+    } else {
+        print(Constants.ErrorMessage.inputErrorMessage)
     }
     
     startManager()
