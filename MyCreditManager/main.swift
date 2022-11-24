@@ -44,7 +44,7 @@ func addStudent() {
         if studentList.contains(where: { $0.name == name }) {
             print(name + " " + Constants.ErrorMessage.studentAlreadyExistMessage)
         } else {
-            studentList.append(Student(name: name, score: nil))
+            studentList.append(Student(name: name, score: [:]))
             print(name + Constants.SuccessMessage.addStudentNameSuccessMessage)
         }
     } else {
@@ -77,16 +77,22 @@ func deleteStudent() {
 func addOrEditScore() {
     print(Constants.Message.addScoreInputMessage)
     
-    if let student = readLine() {
-        if student.count > 0 && student.split(separator: " ").count == 3 {
-            var splitedStudentInput = student.split(separator: " ")
-            let name = splitedStudentInput[0]
-            let subject = splitedStudentInput[1]
-            let score = splitedStudentInput[2]
-        } else {
-            print(Constants.ErrorMessage.inputErrorMessage)
+    let studentScoreInput = readLine() ?? ""
+    
+    if studentScoreInput.count > 0 && studentScoreInput.split(separator: " ").count == 3 {
+        let splitedStudentInput = studentScoreInput.split(separator: " ")
+        let name = splitedStudentInput[0]
+        let subject = String(describing: splitedStudentInput[1])
+        let score = splitedStudentInput[2]
+        
+        if let idx = studentList.firstIndex(where: { $0.name == name }) {
+            var scoreDic = studentList[idx].score
+            scoreDic[subject] = String(score)
+            studentList[idx] = Student(name: String(name), score: scoreDic)
         }
         
+    } else {
+        print(Constants.ErrorMessage.inputErrorMessage)
     }
     
     startManager()
