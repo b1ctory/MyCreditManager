@@ -137,7 +137,12 @@ func printGrade() {
     
     if name.trimmingCharacters(in: .whitespaces).count > 0 {
         let trimmedName = name.replacingOccurrences(of: " ", with: "")
-        print(calculateGrade(name: trimmedName))
+        
+        if studentList.contains(where: { $0.name == trimmedName }) {
+            print("평점 : \(calculateGrade(name: trimmedName))")
+        } else {
+            print(Constants.ErrorMessage.studentNotFoundMessage)
+        }
     } else {
         print(Constants.ErrorMessage.inputErrorMessage)
     }
@@ -151,6 +156,7 @@ func calculateGrade(name: String) -> Double {
     
     if let idx = studentList.firstIndex(where: { $0.name == name }) {
         studentList[idx].score.forEach {
+            print("\($0.key) : \($0.value)")
             countSum += scoreToFloat(score: $0.value)
         }
         subjectCount = Double(studentList[idx].score.count)
