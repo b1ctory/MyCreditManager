@@ -106,6 +106,27 @@ func addOrEditScore() {
 
 func deleteScore() {
     print(Constants.Message.deleteScoreMessage)
+    
+    let studentScoreInput = readLine() ?? ""
+    
+    if studentScoreInput.count > 0 && studentScoreInput.split(separator: " ").count == 2 {
+        let splitedStudentInput = studentScoreInput.split(separator: " ")
+        let name = String(splitedStudentInput[0])
+        let subject = String(splitedStudentInput[1])
+        
+        if let idx = studentList.firstIndex(where: { $0.name == name }) {
+            var scoreDic = studentList[idx].score
+            scoreDic[subject] = nil
+            studentList[idx] = Student(name: name, score: scoreDic)
+            print("\(name) 학생의 \(subject) " + Constants.SuccessMessage.deleteScoreSuccessMessage )
+        } else {
+            print(name + Constants.ErrorMessage.studentNotFoundMessage)
+        }
+        
+    } else {
+        print(Constants.ErrorMessage.inputErrorMessage)
+    }
+    
     startManager()
 }
 
