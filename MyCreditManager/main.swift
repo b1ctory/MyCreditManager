@@ -9,13 +9,21 @@ import Foundation
 
 var students: [Student] = []
 
-func startManager() {
+func showMenu() {
     print(Constants.Message.startMessage)
     print(Constants.Message.selectMessage)
+}
+
+func recieveUserInput() -> String? {
+    return readLine()
+}
+
+func run() {
+    guard let menuInput: String = recieveUserInput() else {
+        return
+    }
     
-    let menuPickInput = readLine()
-    
-    switch menuPickInput {
+    switch menuInput {
     case "1":
         addStudent()
     case "2":
@@ -32,9 +40,7 @@ func startManager() {
         exitProgram()
     default:
         print(Constants.ErrorMessage.selectInputErrorMessage)
-        if menuPickInput != nil {
-            startManager()
-        }
+        run()
     }
 }
 
@@ -53,7 +59,7 @@ func addStudent() {
     } else {
         print(Constants.ErrorMessage.inputErrorMessage)
     }
-    startManager()
+    run()
 }
 
 func deleteStudent() {
@@ -74,7 +80,7 @@ func deleteStudent() {
         print(Constants.ErrorMessage.inputErrorMessage)
     }
     
-    startManager()
+    run()
 }
 
 func addOrEditScore() {
@@ -101,7 +107,7 @@ func addOrEditScore() {
         print(Constants.ErrorMessage.inputErrorMessage)
     }
     
-    startManager()
+    run()
 }
 
 func deleteScore() {
@@ -127,7 +133,7 @@ func deleteScore() {
         print(Constants.ErrorMessage.inputErrorMessage)
     }
     
-    startManager()
+    run()
 }
 
 func printGrade() {
@@ -147,7 +153,7 @@ func printGrade() {
         print(Constants.ErrorMessage.inputErrorMessage)
     }
     
-    startManager()
+    run()
 }
 
 func calculateGrade(name: String) -> Double {
@@ -193,7 +199,7 @@ func scoreToFloat(score: String) -> Double {
 /// 임시 메소드 -> 리스트 파악용
 func printStudentList() {
     print(students)
-    startManager()
+    run()
     
 }
 
@@ -202,4 +208,4 @@ func exitProgram() {
     exit(0)
 }
 
-startManager()
+run()
