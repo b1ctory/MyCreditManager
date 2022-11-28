@@ -7,7 +7,7 @@
 
 import Foundation
 
-var studentList: [Student] = []
+var students: [Student] = []
 
 func startManager() {
     print(Constants.Message.startMessage)
@@ -44,10 +44,10 @@ func addStudent() {
     
     if name.trimmingCharacters(in: .whitespaces).count > 0 {
         let trimmedName = name.replacingOccurrences(of: " ", with: "")
-        if studentList.contains(where: { $0.name == trimmedName }) {
+        if students.contains(where: { $0.name == trimmedName }) {
             print(trimmedName + " " + Constants.ErrorMessage.studentAlreadyExistMessage)
         } else {
-            studentList.append(Student(name: trimmedName, score: [:]))
+            students.append(Student(name: trimmedName, score: [:]))
             print(trimmedName + Constants.SuccessMessage.addStudentNameSuccessMessage)
         }
     } else {
@@ -62,8 +62,8 @@ func deleteStudent() {
     let name = readLine() ?? ""
     
     if name.trimmingCharacters(in: .whitespaces).count > 0 {
-        if studentList.contains(where: { $0.name == name }) {
-            studentList = studentList.filter {
+        if students.contains(where: { $0.name == name }) {
+            students = students.filter {
                 $0.name != name
             }
             print(name + " " + Constants.SuccessMessage.deleteStudentNameSuccessMessage)
@@ -88,10 +88,10 @@ func addOrEditScore() {
         let subject = String(splitedStudentInput[1])
         let score = String(splitedStudentInput[2])
         
-        if let idx = studentList.firstIndex(where: { $0.name == name }) {
-            var scoreDic = studentList[idx].score
+        if let idx = students.firstIndex(where: { $0.name == name }) {
+            var scoreDic = students[idx].score
             scoreDic[subject] = score
-            studentList[idx] = Student(name: name, score: scoreDic)
+            students[idx] = Student(name: name, score: scoreDic)
             print("\(name) 학생의 \(subject) 과목이 \(score)로 " + Constants.SuccessMessage.addScoreSuccessMessage)
         } else {
             print(name + Constants.ErrorMessage.studentNotFoundMessage)
@@ -114,10 +114,10 @@ func deleteScore() {
         let name = String(splitedStudentInput[0])
         let subject = String(splitedStudentInput[1])
         
-        if let idx = studentList.firstIndex(where: { $0.name == name }) {
-            var scoreDic = studentList[idx].score
+        if let idx = students.firstIndex(where: { $0.name == name }) {
+            var scoreDic = students[idx].score
             scoreDic[subject] = nil
-            studentList[idx] = Student(name: name, score: scoreDic)
+            students[idx] = Student(name: name, score: scoreDic)
             print("\(name) 학생의 \(subject) " + Constants.SuccessMessage.deleteScoreSuccessMessage )
         } else {
             print(name + Constants.ErrorMessage.studentNotFoundMessage)
@@ -138,7 +138,7 @@ func printGrade() {
     if name.trimmingCharacters(in: .whitespaces).count > 0 {
         let trimmedName = name.replacingOccurrences(of: " ", with: "")
         
-        if studentList.contains(where: { $0.name == trimmedName }) {
+        if students.contains(where: { $0.name == trimmedName }) {
             print("평점 : \(calculateGrade(name: trimmedName))")
         } else {
             print(Constants.ErrorMessage.studentNotFoundMessage)
@@ -154,12 +154,12 @@ func calculateGrade(name: String) -> Double {
     var countSum = 0.0
     var subjectCount = 0.0
     
-    if let idx = studentList.firstIndex(where: { $0.name == name }) {
-        studentList[idx].score.forEach {
+    if let idx = students.firstIndex(where: { $0.name == name }) {
+        students[idx].score.forEach {
             print("\($0.key) : \($0.value)")
             countSum += scoreToFloat(score: $0.value)
         }
-        subjectCount = Double(studentList[idx].score.count)
+        subjectCount = Double(students[idx].score.count)
     } else {
         print(name + Constants.ErrorMessage.studentNotFoundMessage)
     }
@@ -192,7 +192,7 @@ func scoreToFloat(score: String) -> Double {
 
 /// 임시 메소드 -> 리스트 파악용
 func printStudentList() {
-    print(studentList)
+    print(students)
     startManager()
     
 }
