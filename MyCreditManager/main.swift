@@ -18,7 +18,7 @@ func recieveUserInput() -> String? {
     return readLine()
 }
 
-func run() {
+func startManager() {
     guard let menuInput: String = recieveUserInput() else {
         return
     }
@@ -40,7 +40,7 @@ func run() {
         exitProgram()
     default:
         print(Constants.ErrorMessage.selectInputErrorMessage)
-        run()
+        startManager()
     }
 }
 
@@ -53,13 +53,13 @@ func addStudent() {
         if students.contains(where: { $0.name == trimmedName }) {
             print(trimmedName + " " + Constants.ErrorMessage.studentAlreadyExistMessage)
         } else {
-            students.append(Student(name: trimmedName, score: [:]))
+            students.append(Student(name: trimmedName, scores: [:]))
             print(trimmedName + Constants.SuccessMessage.addStudentNameSuccessMessage)
         }
     } else {
         print(Constants.ErrorMessage.inputErrorMessage)
     }
-    run()
+    startManager()
 }
 
 func deleteStudent() {
@@ -80,7 +80,7 @@ func deleteStudent() {
         print(Constants.ErrorMessage.inputErrorMessage)
     }
     
-    run()
+    startManager()
 }
 
 func addOrEditScore() {
@@ -95,9 +95,9 @@ func addOrEditScore() {
         let score = String(splitedStudentInput[2])
         
         if let idx = students.firstIndex(where: { $0.name == name }) {
-            var scoreDic = students[idx].score
+            var scoreDic = students[idx].scores
             scoreDic[subject] = score
-            students[idx] = Student(name: name, score: scoreDic)
+            students[idx] = Student(name: name, scores: scoreDic)
             print("\(name) 학생의 \(subject) 과목이 \(score)로 " + Constants.SuccessMessage.addScoreSuccessMessage)
         } else {
             print(name + Constants.ErrorMessage.studentNotFoundMessage)
@@ -107,7 +107,7 @@ func addOrEditScore() {
         print(Constants.ErrorMessage.inputErrorMessage)
     }
     
-    run()
+    startManager()
 }
 
 func deleteScore() {
@@ -121,9 +121,9 @@ func deleteScore() {
         let subject = String(splitedStudentInput[1])
         
         if let idx = students.firstIndex(where: { $0.name == name }) {
-            var scoreDic = students[idx].score
+            var scoreDic = students[idx].scores
             scoreDic[subject] = nil
-            students[idx] = Student(name: name, score: scoreDic)
+            students[idx] = Student(name: name, scores: scoreDic)
             print("\(name) 학생의 \(subject) " + Constants.SuccessMessage.deleteScoreSuccessMessage )
         } else {
             print(name + Constants.ErrorMessage.studentNotFoundMessage)
@@ -133,7 +133,7 @@ func deleteScore() {
         print(Constants.ErrorMessage.inputErrorMessage)
     }
     
-    run()
+    startManager()
 }
 
 func printGrade() {
@@ -153,7 +153,7 @@ func printGrade() {
         print(Constants.ErrorMessage.inputErrorMessage)
     }
     
-    run()
+    startManager()
 }
 
 func calculateGrade(name: String) -> Double {
@@ -161,11 +161,11 @@ func calculateGrade(name: String) -> Double {
     var subjectCount = 0.0
     
     if let idx = students.firstIndex(where: { $0.name == name }) {
-        students[idx].score.forEach {
+        students[idx].scores.forEach {
             print("\($0.key) : \($0.value)")
             countSum += scoreToFloat(score: $0.value)
         }
-        subjectCount = Double(students[idx].score.count)
+        subjectCount = Double(students[idx].scores.count)
     } else {
         print(name + Constants.ErrorMessage.studentNotFoundMessage)
     }
@@ -199,7 +199,7 @@ func scoreToFloat(score: String) -> Double {
 /// 임시 메소드 -> 리스트 파악용
 func printStudentList() {
     print(students)
-    run()
+    startManager()
     
 }
 
@@ -208,4 +208,4 @@ func exitProgram() {
     exit(0)
 }
 
-run()
+startManager()
