@@ -9,5 +9,5 @@ import Foundation
 
 struct Student {
     var name: String
-    var score: [String: String] = [:]
+    var scores: [String: String] = [:]
 }
