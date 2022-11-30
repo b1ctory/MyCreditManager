@@ -82,12 +82,16 @@ func deleteStudent() {
 
 func printDeleteStudentResult(name: String) {
     if students.contains(where: { $0.name == name }) {
-        students = students.filter {
-            $0.name != name
-        }
+        filterName(name: name)
         print(name + " " + Constants.SuccessMessage.deleteStudentNameSuccessMessage)
     } else {
         print(name + Constants.ErrorMessage.studentNotFoundMessage)
+    }
+}
+
+func filterName(name: String) {
+    students = students.filter {
+        $0.name != name
     }
 }
 
