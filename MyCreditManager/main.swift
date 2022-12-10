@@ -59,10 +59,10 @@ func addStudent() {
 func printAddStudentResult(name: String) {
     let trimmedName = name.replacingOccurrences(of: " ", with: "")
     if students.contains(where: { $0.name == trimmedName }) {
-        print(trimmedName + " " + ErrorMessage.studentAlreadyExistMessage)
+        print("\(trimmedName) \(ErrorMessage.studentAlreadyExistMessage)")
     } else {
         students.append(Student(name: trimmedName, scores: [:]))
-        print(trimmedName + Constants.SuccessMessage.addStudentNameSuccessMessage)
+        print("\(trimmedName)\(SuccessMessage.addStudentNameSuccessMessage)")
     }
 }
 
@@ -83,9 +83,9 @@ func deleteStudent() {
 func printDeleteStudentResult(name: String) {
     if students.contains(where: { $0.name == name }) {
         filterName(name: name)
-        print(name + " " + Constants.SuccessMessage.deleteStudentNameSuccessMessage)
+        print("\(name) \(SuccessMessage.deleteStudentNameSuccessMessage)")
     } else {
-        print(name + ErrorMessage.studentNotFoundMessage)
+        print("\(name) \(ErrorMessage.studentNotFoundMessage)")
     }
 }
 
@@ -120,9 +120,9 @@ func printAddOrEditScore(name: String, subject: String, score: String) {
         var scoreDic = students[idx].scores
         scoreDic[subject] = score
         students[idx] = Student(name: name, scores: scoreDic)
-        print("\(name) 학생의 \(subject) 과목이 \(score)로 " + Constants.SuccessMessage.addScoreSuccessMessage)
+        print("\(name) 학생의 \(subject) 과목이 \(score)로 \(SuccessMessage.addScoreSuccessMessage)")
     } else {
-        print(name + ErrorMessage.studentNotFoundMessage)
+        print("\(name) \(ErrorMessage.studentNotFoundMessage)")
     }
 }
 
@@ -150,9 +150,9 @@ func printDeleteScore(name: String, subject: String) {
         var scoreDic = students[idx].scores
         scoreDic[subject] = nil
         students[idx] = Student(name: name, scores: scoreDic)
-        print("\(name) 학생의 \(subject) " + Constants.SuccessMessage.deleteScoreSuccessMessage )
+        print("\(name) 학생의 \(subject) \(SuccessMessage.deleteScoreSuccessMessage)")
     } else {
-        print(name + ErrorMessage.studentNotFoundMessage)
+        print("\(name) \(ErrorMessage.studentNotFoundMessage)")
     }
 }
 
@@ -192,7 +192,7 @@ func calculateGrade(name: String) -> Double {
         subjectCount = Double(students[idx].scores.count)
         countSum = getScoreSum(student: students[idx])
     } else {
-        print(name + ErrorMessage.studentNotFoundMessage)
+        print("\(name) \(ErrorMessage.studentNotFoundMessage)")
     }
     
     return round((countSum / subjectCount) * 100) / 100

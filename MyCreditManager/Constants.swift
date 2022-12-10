@@ -20,11 +20,4 @@ struct Constants {
         static let programExitMessage = "프로그램을 종료합니다..."
     }
     
-    struct SuccessMessage {
-        static let addStudentNameSuccessMessage = "학생을 추가했습니다."
-        static let deleteStudentNameSuccessMessage = "학생을 삭제하였습니다."
-        static let addScoreSuccessMessage = "추가(변경) 되었습니다."
-        static let deleteScoreSuccessMessage = "과목의 성적이 삭제되었습니다."
-    }
-    
 }
