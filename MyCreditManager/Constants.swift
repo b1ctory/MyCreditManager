@@ -27,11 +27,4 @@ struct Constants {
         static let deleteScoreSuccessMessage = "과목의 성적이 삭제되었습니다."
     }
     
-    struct ErrorMessage {
-        static let selectInputErrorMessage = "뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요."
-        static let inputErrorMessage = "입력이 잘못되었습니다. 다시 확인해주세요."
-        static let studentAlreadyExistMessage = "은(는) 이미 존재하는 학생입니다. 추가하지 않습니다."
-        static let studentNotFoundMessage = "학생을 찾지 못했습니다."
-    }
-    
 }

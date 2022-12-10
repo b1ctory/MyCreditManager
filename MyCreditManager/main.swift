@@ -39,7 +39,7 @@ func startManager() {
     case "X":
         exitProgram()
     default:
-        print(Constants.ErrorMessage.selectInputErrorMessage)
+        print(ErrorMessage.selectInputErrorMessage)
         startManager()
     }
 }
@@ -51,7 +51,7 @@ func addStudent() {
     if name.trimmingCharacters(in: .whitespaces).count > 0 {
         printAddStudentResult(name: name)
     } else {
-        print(Constants.ErrorMessage.inputErrorMessage)
+        print(ErrorMessage.inputErrorMessage)
     }
     startManager()
 }
@@ -59,7 +59,7 @@ func addStudent() {
 func printAddStudentResult(name: String) {
     let trimmedName = name.replacingOccurrences(of: " ", with: "")
     if students.contains(where: { $0.name == trimmedName }) {
-        print(trimmedName + " " + Constants.ErrorMessage.studentAlreadyExistMessage)
+        print(trimmedName + " " + ErrorMessage.studentAlreadyExistMessage)
     } else {
         students.append(Student(name: trimmedName, scores: [:]))
         print(trimmedName + Constants.SuccessMessage.addStudentNameSuccessMessage)
@@ -74,7 +74,7 @@ func deleteStudent() {
     if name.trimmingCharacters(in: .whitespaces).count > 0 {
         printDeleteStudentResult(name: name)
     } else {
-        print(Constants.ErrorMessage.inputErrorMessage)
+        print(ErrorMessage.inputErrorMessage)
     }
     
     startManager()
@@ -85,7 +85,7 @@ func printDeleteStudentResult(name: String) {
         filterName(name: name)
         print(name + " " + Constants.SuccessMessage.deleteStudentNameSuccessMessage)
     } else {
-        print(name + Constants.ErrorMessage.studentNotFoundMessage)
+        print(name + ErrorMessage.studentNotFoundMessage)
     }
 }
 
@@ -109,7 +109,7 @@ func addOrEditScore() {
         printAddOrEditScore(name: name, subject: subject, score: score)
         
     } else {
-        print(Constants.ErrorMessage.inputErrorMessage)
+        print(ErrorMessage.inputErrorMessage)
     }
     
     startManager()
@@ -122,7 +122,7 @@ func printAddOrEditScore(name: String, subject: String, score: String) {
         students[idx] = Student(name: name, scores: scoreDic)
         print("\(name) 학생의 \(subject) 과목이 \(score)로 " + Constants.SuccessMessage.addScoreSuccessMessage)
     } else {
-        print(name + Constants.ErrorMessage.studentNotFoundMessage)
+        print(name + ErrorMessage.studentNotFoundMessage)
     }
 }
 
@@ -139,7 +139,7 @@ func deleteScore() {
         printDeleteScore(name: name, subject: subject)
         
     } else {
-        print(Constants.ErrorMessage.inputErrorMessage)
+        print(ErrorMessage.inputErrorMessage)
     }
     
     startManager()
@@ -152,7 +152,7 @@ func printDeleteScore(name: String, subject: String) {
         students[idx] = Student(name: name, scores: scoreDic)
         print("\(name) 학생의 \(subject) " + Constants.SuccessMessage.deleteScoreSuccessMessage )
     } else {
-        print(name + Constants.ErrorMessage.studentNotFoundMessage)
+        print(name + ErrorMessage.studentNotFoundMessage)
     }
 }
 
@@ -167,7 +167,7 @@ func showGrade() {
         printGrade(trimmedName: trimmedName)
         
     } else {
-        print(Constants.ErrorMessage.inputErrorMessage)
+        print(ErrorMessage.inputErrorMessage)
     }
     
     startManager()
@@ -178,7 +178,7 @@ func printGrade(trimmedName: String) {
     if students.contains(where: { $0.name == trimmedName }) {
         print("평점 : \(calculateGrade(name: trimmedName))")
     } else {
-        print(Constants.ErrorMessage.studentNotFoundMessage)
+        print(ErrorMessage.studentNotFoundMessage)
     }
     
 }
@@ -192,7 +192,7 @@ func calculateGrade(name: String) -> Double {
         subjectCount = Double(students[idx].scores.count)
         countSum = getScoreSum(student: students[idx])
     } else {
-        print(name + Constants.ErrorMessage.studentNotFoundMessage)
+        print(name + ErrorMessage.studentNotFoundMessage)
     }
     
     return round((countSum / subjectCount) * 100) / 100
