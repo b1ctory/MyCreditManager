@@ -10,8 +10,8 @@ import Foundation
 var students: [Student] = []
 
 func showMenu() {
-    print(Constants.Message.startMessage)
-    print(Constants.Message.selectMessage)
+    print(Message.startMessage)
+    print(Message.selectMessage)
 }
 
 func recieveUserInput() -> String? {
@@ -45,7 +45,7 @@ func startManager() {
 }
 
 func addStudent() {
-    print(Constants.Message.addStudentNameInputMessage)
+    print(Message.addStudentNameInputMessage)
     let name = readLine() ?? ""
     
     if name.trimmingCharacters(in: .whitespaces).count > 0 {
@@ -67,7 +67,7 @@ func printAddStudentResult(name: String) {
 }
 
 func deleteStudent() {
-    print(Constants.Message.deleteStudentNameInputMessage)
+    print(Message.deleteStudentNameInputMessage)
     
     let name = readLine() ?? ""
     
@@ -96,7 +96,7 @@ func filterName(name: String) {
 }
 
 func addOrEditScore() {
-    print(Constants.Message.addScoreInputMessage)
+    print(Message.addScoreInputMessage)
     
     let studentScoreInput = readLine() ?? ""
     
@@ -127,7 +127,7 @@ func printAddOrEditScore(name: String, subject: String, score: String) {
 }
 
 func deleteScore() {
-    print(Constants.Message.deleteScoreMessage)
+    print(Message.deleteScoreMessage)
     
     let studentScoreInput = readLine() ?? ""
     
@@ -157,7 +157,7 @@ func printDeleteScore(name: String, subject: String) {
 }
 
 func showGrade() {
-    print(Constants.Message.getGradeMessage)
+    print(Message.getGradeMessage)
     
     let name = readLine() ?? ""
     
@@ -243,7 +243,7 @@ func printStudentList() {
 }
 
 func exitProgram() {
-    print(Constants.Message.programExitMessage)
+    print(Message.programExitMessage)
     exit(0)
 }
 
